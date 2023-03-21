@@ -15,16 +15,22 @@ const images = [
   },
 ];
 const galleryList = document.querySelector('.gallery');
+const imageEl = createImages(images);
+galleryList.insertAdjacentHTML('beforeend', imageEl)
+
+function createImages(images) {
+  return images.map(({ url, alt }) => {
+    return `<li>
+        <img src="${url}" alt="${alt}" width = '600'>
+      </li>`
+  }).join('')
+}
 
 
-images.forEach(image => {
-  const li = document.createElement('li');
-  
-  const imgEl = `<img src='${image.url}' alt = '${image.alt}' width = '600'>`;
 
-  li.insertAdjacentHTML('beforeend', imgEl);
-  li.classList.add('galery-item')
 
-  galleryList.insertAdjacentElement('beforeend', li)
-})
+
+
+
+
 
